@@ -1,6 +1,27 @@
 # UMGC_CapstoneCourse
-Variant calling pipeline made up of shell scripts using Docker containers.
+Prokaryote variant calling pipeline made up of shell scripts using Docker containers.
 
 **There are 3 major subprocesses wrapped under a single workflow:**
 * `run_vc-pipeline.sh`
-  * Read
+  * Read QC and trimming:
+    * FastQC - quality check reads
+    * Trimmomatic - trim reads
+    * Fastq-info - check coverage (10x min.)
+  * Read alignment:
+    *  Bwa index/bwa mem - create index files and align
+    *  Samtools - convert and sort .sam to sorted.bam
+    *  QualiMap - quality check alignment
+    *  Picard - mark and remove duplicate reads
+  *  Variant calling:
+     *  GATK-4 HaplotypeCaller - short variant discovery
+## TOC
+* [Install](#install)
+
+## Install
+Navigate to your home directory and git clone the repository.
+```bash
+$ git clone https://github.com/kimyoungw/UMGC_CapstoneCourse
+```
+Adding the workflows to your $PATH is an option if you are comfortable with doing so.
+
+Once the repository is cloned, navigate to 
