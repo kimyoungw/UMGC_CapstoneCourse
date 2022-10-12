@@ -84,15 +84,15 @@ rm -r \?/
 bash ~/fastq-info/bin/fastqinfo-2.0.sh -r 125 01_reads_qc_trim/shortreads/trimmomatic0.39/output_forward_paired.fq.gz 01_reads_qc_trim/shortreads/trimmomatic0.39/output_reverse_paired.fq.gz 01_reads_qc_trim/reference/ref.fasta > coverage.txt
 
 #add a parse of coverage.txt to determine if row 2 column 5 is >10x, if not end script
+
 tail -1 coverage.txt | awk -F"\t" '{print$5}' > coverageout.txt
-sed 's/...//' coverageout.txt
+#sed 's/...//' coverageout.txt
 coveragevalue=$(cat coverageout.txt)
 if [[ $coveragevalue -le 10 ]]; then
 	echo "Less than 10x coverage"
 	rm coverageout.txt
-	mv coverage.txt 01_reads_qc_trim/shortreads/trimmomatic0.39/
 	exit 0
-else
-	mv coverage.txt 01_reads_qc_trim/shortreads/trimmomatic0.39/
+#else
+	mv coverage.txt 01_reads_qc_trim/
 	rm coverageout.txt
 fi
