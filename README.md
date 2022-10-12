@@ -16,3 +16,9 @@ Prokaryote variant calling pipeline made up of shell scripts using Docker contai
      *  GATK-4 HaplotypeCaller - short variant discovery
 ## TOC
 * [Install](#install)
+
+## Install
+Navigate to your home directory and git clone the repository.
+```bash
+$git clone https://github.com/kimyoungw/UMGC_CapstoneCourse
+```
