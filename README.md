@@ -37,16 +37,17 @@ Or alternatively, feel free to do them manually.
 
 ### Docker container images
  ```bash                         
-`docker pull pegi3s/fastqc`     
-`docker pull pegi3s/picard`     
-`docker pull pegi3s/qualimap`   
-`docker pull staphb/bwa`        
-`docker pull staphb/samtools`   
-`docker pull staphb/trimmomatic`
-```                             
+$ docker pull pegi3s/fastqc
+$ docker pull pegi3s/picard
+$ docker pull pegi3s/qualimap
+$ docker pull staphb/bwa
+$ docker pull staphb/samtools
+$ docker pull staphb/trimmomatic
+```               
 
-|Github
-|-----------------------------------------------------|
-| `git clone https://github.com/raymondkiu/fastq-info`| 
-
+### Github
+```bash
+$ git clone https://github.com/raymondkiu/fastq-info
+```
+Citation: Kiu R, fastq-info: compute estimated sequencing depth (coverage) of prokaryotic genomes, GitHub https://github.com/raymondkiu/fastq-info
 
