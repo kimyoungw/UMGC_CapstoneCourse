@@ -107,8 +107,8 @@ Help/usage statement for each script can be pulled up by running `whateveryourer
 ```bash
 Usage: /path/to/umgc_capstonecourse_2022/workflow/run_vc-pipeline.sh
    -r reference.fasta   reference genome in fasta format
-   -p read_1.fastq   read1 in fastq format
-   -q read_2.fastq			read2 in fastq format
+   -p read_1.fastq     read1 in fastq format
+   -q read_2.fastq     read2 in fastq format
 
 Example: /path/to/umgc_capstonecourse_2022/workflow/run_vc-pipeline.sh -r refgenome.fasta -p read_1.fastq -q read_2.fastq
 ```
@@ -124,9 +124,9 @@ Example: /path/to/umgc_capstonecourse_2022/scripts/run_readcheck.sh -i /path/to/
 `run_alignment.sh`
 ```bash
 Usage: /path/to/umgc_capstonecourse_2022/scripts/run_alignment.sh
-   -r path/to/reference/   reference genome in fasta format
-   -p path/to/read1/			read1 in fastq format (qc'd and trimmed)
-   -q path/to/read2/			read2 in fastq format (qc'd and trimmed)
+   -r path/to/reference/       reference genome in fasta format
+   -p path/to/read1/		read1 in fastq format (qc'd and trimmed)
+   -q path/to/read2/		read2 in fastq format (qc'd and trimmed)
 
 Example: /path/to/umgc_capstonecourse_2022/scripts/run_alignment.sh -r /path/to/ref.fasta -p /path/to/read_1.fastq -q /path/to/read_2.fastq
 ```
