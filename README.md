@@ -35,16 +35,15 @@ Linux installation: https://docs.docker.com/desktop/install/linux-install/
 Once the repository is cloned, run `install.sh` to download the required docker containers and github repos.
 Or alternatively, feel free to do them manually.
 
-| Container                
-|---------------------------------|
-| ```bash                         |
-| `docker pull pegi3s/fastqc`     |
-| `docker pull pegi3s/picard`     |
-| `docker pull pegi3s/qualimap`   |
-| `docker pull staphb/bwa`        |
-| `docker pull staphb/samtools`   |
-| `docker pull staphb/trimmomatic`|
-| ```                             |
+### Docker container images
+ ```bash                         
+`docker pull pegi3s/fastqc`     
+`docker pull pegi3s/picard`     
+`docker pull pegi3s/qualimap`   
+`docker pull staphb/bwa`        
+`docker pull staphb/samtools`   
+`docker pull staphb/trimmomatic`
+```                             
 
 |Github
 |-----------------------------------------------------|
