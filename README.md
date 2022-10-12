@@ -39,7 +39,7 @@ $ docker pull staphb/trimmomatic
 ```               
 
 ### Github
-**Note**: fastq-info must be installed on your home directory such that the executable can be found by this path: `~/fastq-info/bin/fastqinfo-2.0.sh`
+**Note**: If you are installing fastq-info manually, it must be cloned such that the executable can be found by this path: `umgc_capstonecourse_2022/fastq-info/bin/fastqinfo-2.0.sh`
 
 ```bash
 $ git clone https://github.com/raymondkiu/fastq-info
