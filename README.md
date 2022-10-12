@@ -7,6 +7,7 @@ Developed by Siddhant Bose, Crystal Girod, Justin Kim, Sandra Shannon, and Rache
 * [Install](#install)
 * [Workflow](#workflow)
 * [Usage](#usage)
+* [Resources](#resources)
 
 ## Install
 Navigate to your home directory and git clone the repository.
@@ -43,7 +44,6 @@ $ docker pull staphb/trimmomatic
 ```bash
 $ git clone https://github.com/raymondkiu/fastq-info
 ```
-Citation: Kiu R, fastq-info: compute estimated sequencing depth (coverage) of prokaryotic genomes, GitHub https://github.com/raymondkiu/fastq-info
 
 **Note**: One last thing - Confirm you have read-write-execute permissions for the scripts. If not:
 ```bash
@@ -80,28 +80,29 @@ Overview of pipeline, its three main subprocesses, and what's running in each:
 ├── reference/
 │   └── ref.fasta
 ├── shortreads
-│   └── fastqc/
-│   └── trimmomatic0.39/
-│   └── shortread_1.fastq.gz
-│   └── shortread_2.fastq.gz
+    └── fastqc/
+    └── trimmomatic0.39/
+    └── shortread_1.fastq.gz
+    └── shortread_2.fastq.gz
 ```
 * Runs `run_alignment.sh`
 ```bash
 #Output (abbreviated):
 02_alignment
-├── bwamem_output_raw.sorted_stats/ #QualiMap output
-├── indexfiles/
-├── bwamem_output_raw.sorted.bam
-├── marked_duplicates.bam
+└── bwamem_output_raw.sorted_stats/ #QualiMap output
+└── indexfiles/
+└── bwamem_output_raw.sorted.bam
+└── marked_duplicates.bam
 ```
 * Runs `run_varcall.sh`
 ```bash
 #Output (abbreviated):
 03_varcall
+└── varcalls.vcf
 ```
 
 ## Usage
-You can either call `run_vc-pipeline.sh` to run the entire workflow or each subprocess individually if you have the required inputs already.
+You can either call `run_vc-pipeline.sh` to run the entire workflow or each subprocess individually if you have the required inputs already from one step but ran into a machine error in another.
 
 Help/usage statement for each script can be pulled up by running `whateveryourerunning.sh -h`
 
@@ -132,3 +133,17 @@ Usage: /path/to/umgc_capstonecourse_2022/scripts/run_alignment.sh
 
 Example: /path/to/umgc_capstonecourse_2022/scripts/run_alignment.sh -r /path/to/ref.fasta -p /path/to/read_1.fastq -q /path/to/read_2.fastq
 ```
+
+`run_varcall.sh`
+```bash
+Usage: /path/to/umgc_capstonecourse_2022/scripts/run_varcall.sh
+   -r path/to/reference/        reference genome in fasta format
+   -i path/to/.bam/             sorted and duplicates marked .bam
+
+Example: /path/to/umgc_capstonecourse_2022/scripts/run_varcall.sh -r /path/to/ref.fasta -i sorted.duplicatesmarked.bam
+```
+
+## Resources
+* Fastq-info: Kiu R, fastq-info: compute estimated sequencing depth (coverage) of prokaryotic genomes, GitHub https://github.com/raymondkiu/fastq-info
+* State Public Health Bioinformatics Workgroup (StaphB): https://github.com/StaPH-B
+* Phenotypic Evolution Group (pegi3s): https://github.com/pegi3s
