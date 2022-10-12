@@ -84,6 +84,8 @@ fi
 
 echo "Moving reads to 01_reads_qc_trim/shortreads/"
 echo "Renaming and moving reference genome to 01_reads_qc_trim/reference/ref.fasta"
+read1=$(basename ${READ1})
+read2=$(basename ${READ2})
 mv $READ1 01_reads_qc_trim/shortreads/
 mv $READ2 01_reads_qc_trim/shortreads/
 mv $REFERENCE ref.fasta
@@ -91,4 +93,7 @@ mv ref.fasta 01_reads_qc_trim/reference/
 
 #Run subprocess 1: run_readcheck.sh
 bash ${thisDir}/../scripts/run_readcheck.sh -i 01_reads_qc_trim/shortreads
+
+#Run subprocess 2: run_alignment.sh
+bash ${thisDir}/../scripts/run_alignment.sh -r 01_reads_qc_trim/reference/ref.fasta -p 01_reads_qc_trim/shortreads/${read1} -q 01_reads_qc_trim/shortreads/${read2}
 
