@@ -16,7 +16,7 @@ echo "			-r path/to/reference/			reference genome in fasta format"
 echo "			-p path/to/read1/			read1 in fastq format"
 echo "			-q path/to/read2/			read2 in fastq format"
 echo ""
-echo "Example: $0 -r /path/to/refgenome.fasta -a /path/to/read1.fastq -b path/to/read2.fastq"
+echo "Example: $0 -r /path/to/refgenome.fasta -p /path/to/read_1.fastq -q path/to/read_2.fastq"
 echo ""
 exit 0
 }
