@@ -23,47 +23,56 @@ else
 fi
 
 #Clone git repositories
+echo ""
 git clone https://github.com/raymondkiu/fastq-info
+echo ""
 
 #Pull Docker images
 #fastqc
 if docker pull pegi3s/fastqc; then
-	echo " "
+	echo ""
 else
 	echo "Error pulling image. Exiting..."
 	exit 1
 fi
 #picard
 if docker pull pegi3s/picard; then
-	echo " "
+	echo ""
 else
 	echo "Error pulling image. Exiting..."
 	exit 1
 fi
 #qualimap
 if docker pull pegi3s/qualimap; then
-	echo " "
+	echo ""
+else
+	echo "Error pulling image. Exiting..."
+	exit 1
+fi
+#bcftools
+if docker pull staphb/bcftools; then
+	echo ""
 else
 	echo "Error pulling image. Exiting..."
 	exit 1
 fi
 #bwa
 if docker pull staphb/bwa; then
-	echo " "
+	echo ""
 else
 	echo "Error pulling image. Exiting..."
 	exit 1
 fi
 #samtools
 if docker pull staphb/samtools; then
-	echo " "
+	echo ""
 else
 	echo "Error pulling image. Exiting..."
 	exit 1
 fi
 #trimmomatic
 if docker pull staphb/trimmomatic; then
-	echo " "
+	echo ""
 else
 	echo "Error pulling image. Exiting..."
 	exit 1
