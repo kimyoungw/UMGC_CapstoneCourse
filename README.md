@@ -20,5 +20,8 @@ Prokaryote variant calling pipeline made up of shell scripts using Docker contai
 ## Install
 Navigate to your home directory and git clone the repository.
 ```bash
-$git clone https://github.com/kimyoungw/UMGC_CapstoneCourse
+$ git clone https://github.com/kimyoungw/UMGC_CapstoneCourse
 ```
+Adding the workflows to your $PATH is an option if you are comfortable with doing so.
+
+Once the repository is cloned, navigate to 
