@@ -37,7 +37,7 @@ Or alternatively, feel free to do them manually.
 
 | Container                
 |---------------------------------|
-| ```bash
+| ```bash                         |
 | `docker pull pegi3s/fastqc`     |
 | `docker pull pegi3s/picard`     |
 | `docker pull pegi3s/qualimap`   |
@@ -48,6 +48,6 @@ Or alternatively, feel free to do them manually.
 
 |Github
 |-----------------------------------------------------|
-| `git clone https://github.com/raymondkiu/fastq-info'| 
+| `git clone https://github.com/raymondkiu/fastq-info`| 
 
 
