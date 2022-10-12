@@ -79,7 +79,7 @@ Overview of pipeline, its three main subprocesses, and what's running in each:
 01_reads_qc_trim
 ├── reference/
 │   └── ref.fasta
-├── shortreads
+└── shortreads
     └── fastqc/
     └── trimmomatic0.39/
     └── shortread_1.fastq.gz
