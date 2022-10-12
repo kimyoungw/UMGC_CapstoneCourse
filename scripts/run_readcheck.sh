@@ -80,7 +80,7 @@ mv output* ${READS}/trimmomatic0.39/
 #Kiu R, fastq-info: compute estimated sequencing depth (coverage) of prokaryotic genomes, GitHub https://github.com/raymondkiu/fastq-info
 # modified to output
 
-bash ~/fastq-info/bin/fastqinfo-2.0.sh -r 125 ./trimmomatic0.39/output_forward_paired.fq.gz ./trimmomatic0.39/output_reverse_paired.fq.gz ./01_reads_qc_trim/reference/ref.fasta > coverage.txt
+bash ~/fastq-info/bin/fastqinfo-2.0.sh -r 125 ${READS}/trimmomatic0.39/output_forward_paired.fq.gz ${READS}/trimmomatic0.39/output_reverse_paired.fq.gz 01_reads_qc_trim/reference/ref.fasta > coverage.txt
 
 #add a parse of coverage.txt to determine if row 2 column 5 is >10x, if not end script
 
