@@ -1,6 +1,8 @@
 # UMGC_CapstoneCourse
 Prokaryote variant calling pipeline almost exclusively using Docker containers wrapped up in a shell script workflow.
 
+Developed by Siddhant Bose, Crystal Girod, Justin Kim, Sandra Shannon, and Rachel Vogel.
+
 ## TOC
 * [Install](#install)
 * [Workflow](#workflow)
