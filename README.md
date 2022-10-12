@@ -37,12 +37,14 @@ Or alternatively, feel free to do them manually.
 
 | Container                
 |---------------------------------|
+| ```bash
 | `docker pull pegi3s/fastqc`     |
 | `docker pull pegi3s/picard`     |
 | `docker pull pegi3s/qualimap`   |
 | `docker pull staphb/bwa`        |
 | `docker pull staphb/samtools`   |
 | `docker pull staphb/trimmomatic`|
+| ```                             |
 
 |Github
 |-----------------------------------------------------|
