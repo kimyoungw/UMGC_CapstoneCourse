@@ -4,6 +4,7 @@ Prokaryote variant calling pipeline almost exclusively using Docker containers w
 ## TOC
 * [Install](#install)
 * [Workflow](#workflow)
+* [Usage](#usage)
 
 ## Install
 Navigate to your home directory and git clone the repository.
@@ -29,31 +30,103 @@ $ docker pull pegi3s/fastqc
 $ docker pull pegi3s/picard
 $ docker pull pegi3s/qualimap
 $ docker pull staphb/bwa
+$ docker pull pegi3s/gatk-4
 $ docker pull staphb/samtools
 $ docker pull staphb/trimmomatic
 ```               
 
 ### Github
+**Note**: fastq-info must be installed on your home directory such that the executable can be found by this path: `~/fastq-info/bin/fastqinfo-2.0.sh`
+
 ```bash
 $ git clone https://github.com/raymondkiu/fastq-info
 ```
 Citation: Kiu R, fastq-info: compute estimated sequencing depth (coverage) of prokaryotic genomes, GitHub https://github.com/raymondkiu/fastq-info
 
-Do take care to check if the scripts are executable!
+**Note**: One last thing - Confirm you have read-write-execute permissions for the scripts. If not:
+```bash
+chmod +x for_each_script.sh
+```
 
 ## Workflow
 
 Overview of pipeline, its three main subprocesses, and what's running in each:
 
 * `run_vc-pipeline.sh`
-  * Read QC and trimming:
+  * Read QC and trimming - run_readcheck.sh:
     * FastQC - quality check reads
     * Trimmomatic - trim reads
     * Fastq-info - check coverage (10x min.)
-  * Read alignment:
+  * Read alignment - run_alignment.sh:
     *  Bwa index/bwa mem - create index files and align
     *  Samtools - convert and sort .sam to sorted.bam
     *  QualiMap - quality check alignment
     *  Picard - mark and remove duplicate reads
-  *  Variant calling:
+  *  Variant calling - run_varcall.sh:
      *  GATK-4 HaplotypeCaller - short variant discovery
+
+### What it does:
+* Takes 3 required arguments:
+  * **NOTE**: All three files need to be together in your **current** working directory. This is because of the way the storage is mounted between the local machine's filesystem and the Docker containers'. All outputs are by default directed to your current working directory.
+  1. `-r reference.fasta` - the reference genome in .fasta format
+  2. `-p short_read_1.fastq.gz` - read 1 in .fastq or .fastq.gz format
+  3. `-q short_read_2.fastq.gz` - read 2 in .fastq or .fastq.gz format
+* Runs `run_readcheck.sh`
+```bash
+#Output (abbreviated):
+01_reads_qc_trim
+├── reference/
+│   └── ref.fasta
+├── shortreads
+│   └── fastqc/
+│   └── trimmomatic0.39/
+│   └── shortread_1.fastq.gz
+│   └── shortread_2.fastq.gz
+```
+* Runs `run_alignment.sh`
+```bash
+#Output (abbreviated):
+02_alignment
+├── bwamem_output_raw.sorted_stats/ #QualiMap output
+├── indexfiles/
+├── bwamem_output_raw.sorted.bam
+├── marked_duplicates.bam
+```
+* Runs `run_varcall.sh`
+```bash
+#Output (abbreviated):
+03_varcall
+```
+
+## Usage
+You can either call `run_vc-pipeline.sh` to run the entire workflow or each subprocess individually if you have the required inputs already.
+
+Help/usage statement for each script can be pulled up by running `whateveryourerunning.sh -h`
+
+`run_vc-pipiline.sh`:
+```bash
+Usage: /path/to/umgc_capstonecourse_2022/workflow/run_vc-pipeline.sh
+   -r reference.fasta   reference genome in fasta format
+   -p read_1.fastq   read1 in fastq format
+   -q read_2.fastq			read2 in fastq format
+
+Example: /path/to/umgc_capstonecourse_2022/workflow/run_vc-pipeline.sh -r refgenome.fasta -p read_1.fastq -q read_2.fastq
+```
+
+`run_readcheck.sh`
+```bash
+Usage: /path/to/umgc_capstonecourse_2022/scripts/run_readcheck.sh
+   -i path/to/dir/   directory holding reads
+
+Example: /path/to/umgc_capstonecourse_2022/scripts/run_readcheck.sh -i /path/to/dirwithreads
+```
+
+`run_alignment.sh`
+```bash
+Usage: /path/to/umgc_capstonecourse_2022/scripts/run_alignment.sh
+   -r path/to/reference/   reference genome in fasta format
+   -p path/to/read1/			read1 in fastq format (qc'd and trimmed)
+   -q path/to/read2/			read2 in fastq format (qc'd and trimmed)
+
+Example: /path/to/umgc_capstonecourse_2022/scripts/run_alignment.sh -r /path/to/ref.fasta -p /path/to/read_1.fastq -q /path/to/read_2.fastq
+```
