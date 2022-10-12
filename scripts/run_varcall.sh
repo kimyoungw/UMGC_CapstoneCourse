@@ -59,9 +59,9 @@ if [ -d 03_varcall ]; then
         echo "03_varcall/ already exists"
         echo ""
 else
-        mkdir -v 03_variants/
+        mkdir -v 03_varcall/
 fi
 
 #move vcf files to 06_variants folder
-mv *.vcf 03_variants/
+mv *.vcf 03_varcall/
 rm file.mpileup
