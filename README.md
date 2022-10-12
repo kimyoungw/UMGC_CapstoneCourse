@@ -32,7 +32,7 @@ $ docker pull pegi3s/fastqc
 $ docker pull pegi3s/picard
 $ docker pull pegi3s/qualimap
 $ docker pull staphb/bwa
-$ docker pull pegi3s/gatk-4
+$ docker pull staphb/bcftools
 $ docker pull staphb/samtools
 $ docker pull staphb/trimmomatic
 ```               
@@ -65,7 +65,7 @@ Overview of pipeline, its three main subprocesses, and what's running in each:
     *  QualiMap - quality check alignment
     *  Picard - mark and remove duplicate reads
   *  Variant calling - run_varcall.sh:
-     *  GATK-4 HaplotypeCaller - short variant discovery
+     * Bcftools - call variants with mpileup and call
 
 ### What it does:
 * Takes 3 required arguments:
