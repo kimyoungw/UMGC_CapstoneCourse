@@ -24,4 +24,10 @@ $ git clone https://github.com/kimyoungw/UMGC_CapstoneCourse
 ```
 Adding the workflows to your $PATH is an option if you are comfortable with doing so.
 
-Once the repository is cloned, navigate to 
+:warning: You **need** Docker Desktop installed and running for the next step. :warning:
+Windows installation: https://docs.docker.com/desktop/install/windows-install/
+Mac installation: https://docs.docker.com/desktop/install/mac-install/
+Linux installation: https://docs.docker.com/desktop/install/linux-install/
+
+Once the repository is cloned, run `install.sh` to download the required docker containers and github repos.
+Or alternatively, feel free to do them manually.
