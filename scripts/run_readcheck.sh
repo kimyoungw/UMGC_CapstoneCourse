@@ -73,7 +73,6 @@ docker run -t --rm -u $(id -u):$(id -g) -v $(pwd):/data:rw staphb/trimmomatic tr
 echo ""
 mkdir -pv ${READS}/trimmomatic0.39/
 mv output* ${READS}/trimmomatic0.39/
-rm -r \?/
 
 #fastqinfor-2.0.sh must be downloaded into the file
 #REF file to be downloaded into the folder 
