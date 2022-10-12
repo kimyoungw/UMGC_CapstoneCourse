@@ -83,7 +83,7 @@ bash ~/fastq-info/bin/fastqinfo-2.sh -r 125 ./trimmomatic0.39/output_forward_pai
 
 #add a parse of coverage.txt to determine if row 2 column 5 is >10x, if not end script
 
-tail -1 fastqinfo_out.txt | awk -F"\t" '{print$5}' > coverageout.txt
+tail -1 coverage.txt | awk -F"\t" '{print$5}' > coverageout.txt
 sed 's/...//' coverageout.txt
 coveragevalue= $(cat coverageout.txt)
 if [[$coveragevalue -le 10]];
