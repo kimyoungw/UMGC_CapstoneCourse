@@ -97,3 +97,8 @@ bash ${thisDir}/../scripts/run_readcheck.sh -i 01_reads_qc_trim/shortreads
 #Run subprocess 2: run_alignment.sh
 bash ${thisDir}/../scripts/run_alignment.sh -r 01_reads_qc_trim/reference/ref.fasta -p 01_reads_qc_trim/shortreads/${read1} -q 01_reads_qc_trim/shortreads/${read2}
 
+#Run subprocess 3: run_varcall.sh
+bash ${thisDir}/../scripts/run_alignment.sh -r 01_reads_qc_trim/reference/ref.fasta -i 02_alignment/marked_duplicates.bam
+
+#remove random .java dir that gets created
+rm -r \?/

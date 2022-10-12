@@ -46,11 +46,14 @@ if [[ -z "${REFERENCE}" || -z "${INPUTFILE}" ]]; then
         HELP
 fi
 
-#Run bcftools
+#Run bcftools mpileup to generate genotype likelihoods at each genomic position with coverage
 echo ""
 echo "Running mpileup and calling SNPs/indels using bcftools..."
 echo ""
-docker run -t --rm -u $(id -u):$(id -g) -v $(pwd):/data:rw -w /data staphb/bcftools bcftools mpileup -Ou -f ${REFERENCE} -d 8000 ${INPUTFILE} | bcftools call -mv -Ob -o calls.vcf
+docker run -t --rm -u $(id -u):$(id -g) -v $(pwd):/data:rw -w /data staphb/bcftools bcftools mpileup -Ou -f ${REFERENCE} -d 8000 ${INPUTFILE} -o file.mpileup
+
+#Run bcftools call to generate variant calls
+docker run -t --rm -u $(id -u):$(id -g) -v $(pwd):/data:rw -w /data staphb/bcftools bcftools call -mv -Oz --ploidy 1 -o varcalls.vcf file.mpileup
 
 if [ -d 03_varcall ]; then
         echo "03_varcall/ already exists"
@@ -60,4 +63,5 @@ else
 fi
 
 #move vcf files to 06_variants folder
-mv *.vcf 06_variants/
+mv *.vcf 03_variants/
+rm file.mpileup
