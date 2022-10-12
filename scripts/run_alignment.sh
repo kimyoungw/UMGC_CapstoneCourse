@@ -141,6 +141,7 @@ echo ""
 docker run -t --rm -u $(id -u):$(id -g) -v $(pwd):/data:rw -w /data pegi3s/picard MarkDuplicates -I=bwamem_output_raw.sorted.bam -O=marked_duplicates.bam -M=marked_up_metrics.txt --REMOVE_DUPLICATES
 
 #Clean up files
-rm bwamem_output_raw.sam
-rm bwamem_output_raw.bam
+mv bwamem_output_raw.sam 02_alignment/
+mv bwamem_output_raw.bam 02_alignment/
+mv bwamem_output_raw.sorted.bam 02_alignment/
 mv marked* 02_alignment/
