@@ -70,6 +70,7 @@ read2=$(ls ${READS} | sed -n '/_2/p')
 docker run -t --rm -u $(id -u):$(id -g) -v $(pwd):/data:rw staphb/trimmomatic trimmomatic PE ${READS}/${read1} ${READS}/${read2} output_forward_paired.fq.gz output_forward_unpaired.fq.gz output_reverse_paired.fq.gz output_reverse_unpaired.fq.gz ILLUMINACLIP:/Trimmomatic-0.39/adapters/TruSeq3-PE.fa:2:30:10:2:True LEADING:3 TRAILING:3 MINLEN:36
 
 #Clean up trimmomatic output
+echo ""
 mkdir -pv ${READS}/trimmomatic0.39/
 mv output* ${READS}/trimmomatic0.39/
 
@@ -79,7 +80,7 @@ mv output* ${READS}/trimmomatic0.39/
 #Kiu R, fastq-info: compute estimated sequencing depth (coverage) of prokaryotic genomes, GitHub https://github.com/raymondkiu/fastq-info
 # modified to output
 
-bash ~/fastq-info/bin/fastqinfo-2.sh -r 125 ./trimmomatic0.39/output_forward_paired.fq.gz ./trimmomatic0.39/output_reverse_paired.fq.gz ./01_reads_qc_trim/reference/ref.fasta > coverage.txt
+bash ~/fastq-info/bin/fastqinfo-2.0.sh -r 125 ./trimmomatic0.39/output_forward_paired.fq.gz ./trimmomatic0.39/output_reverse_paired.fq.gz ./01_reads_qc_trim/reference/ref.fasta > coverage.txt
 
 #add a parse of coverage.txt to determine if row 2 column 5 is >10x, if not end script
 
