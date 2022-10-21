@@ -23,26 +23,30 @@ exit 0
 #Set REFERENCE to -r
 #Set READ1 to -p
 #Set READ2 to -q
-while getopts ":hr:p:q:" option; do
-	case ${option} in
-		h)
-		HELP
-		;;
-		r)
-		export REFERENCE=${OPTARG}
-		;;
-		p)
-		export READ1=${OPTARG}
-		;;
-		q)
-		export READ2=${OPTARG}
-		;;
-		\?)
-		echo "Invalid option: ${OPTARG}" 1>&2
-		HELP
-		;;
-	esac
-done
+#while getopts ":hr:p:q:" option; do
+#	case ${option} in
+#		h)
+#		HELP
+#		;;
+#		r)
+#		export REFERENCE=${OPTARG}
+#		;;
+#		p)
+#		export READ1=${OPTARG}
+#		;;
+#		q)
+#		export READ2=${OPTARG}
+#		;;
+#		\?)
+#		echo "Invalid option: ${OPTARG}" 1>&2
+#		HELP
+#		;;
+#	esac
+#done
+
+REFERENCE=$(zenity --file-selection --title="Select a Reference File")
+READ1=$(zenity --file-selection --title="Select the First Read File")
+READ2=$(zenity --file-selection --title="Select the Second Read File")
 
 #Check if all parameters are filled
 if [[ -z "${REFERENCE}" || -z "${READ1}" || -z "${READ2}" ]]; then
