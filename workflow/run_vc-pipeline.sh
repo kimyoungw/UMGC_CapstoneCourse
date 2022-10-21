@@ -95,10 +95,10 @@ mv ref.fasta 01_reads_qc_trim/reference/
 bash ${thisDir}/../scripts/run_readcheck.sh -i 01_reads_qc_trim/shortreads
 
 #Check exit code
-code=$(echo $?)
-if [ code -eq 1 ]; then
+if [[ $? -eq 1 ]]; then
 	echo ""
 	exit 1
+fi
 
 #Run subprocess 2: run_alignment.sh
 bash ${thisDir}/../scripts/run_alignment.sh -r 01_reads_qc_trim/reference/ref.fasta -p 01_reads_qc_trim/shortreads/trimmomatic0.39/output_forward_paired.fq -q 01_reads_qc_trim/shortreads/trimmomatic0.39/output_reverse_paired.fq
