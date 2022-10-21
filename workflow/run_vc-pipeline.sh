@@ -94,11 +94,14 @@ mv ref.fasta 01_reads_qc_trim/reference/
 #Run subprocess 1: run_readcheck.sh
 bash ${thisDir}/../scripts/run_readcheck.sh -i 01_reads_qc_trim/shortreads
 
+#Check exit code
+code=$(echo $?)
+if [ code -eq 1 ]; then
+	echo ""
+	exit 1
+
 #Run subprocess 2: run_alignment.sh
-bash ${thisDir}/../scripts/run_alignment.sh -r 01_reads_qc_trim/reference/ref.fasta -p 01_reads_qc_trim/shortreads/${read1} -q 01_reads_qc_trim/shortreads/${read2}
+bash ${thisDir}/../scripts/run_alignment.sh -r 01_reads_qc_trim/reference/ref.fasta -p 01_reads_qc_trim/shortreads/trimmomatic0.39/output_forward_paired.fq -q 01_reads_qc_trim/shortreads/trimmomatic0.39/output_reverse_paired.fq
 
 #Run subprocess 3: run_varcall.sh
 bash ${thisDir}/../scripts/run_varcall.sh -r 01_reads_qc_trim/reference/ref.fasta -i 02_alignment/marked_duplicates.bam
-
-#remove random .java dir that gets created
-rm -r \?/
