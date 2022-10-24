@@ -1,5 +1,5 @@
 # UMGC_CapstoneCourse
-Prokaryote variant calling pipeline almost exclusively using Docker containers wrapped up in a shell script workflow.
+Prokaryote variant calling pipeline for Illumina short-reads. Almost exclusively uses Docker containers wrapped up in a shell script workflow.
 
 Developed by Siddhant Bose, Crystal Girod, Justin Kim, Sandra Shannon, and Rachael Vogel.
 
@@ -24,7 +24,7 @@ Mac installation: https://docs.docker.com/desktop/install/mac-install/
 
 Linux installation: https://docs.docker.com/desktop/install/linux-install/
 
-Once the repository is cloned, run `install.sh` to download the required docker containers and github repos.
+Once the repository is cloned, navigate to the umgc_capstonecourse_2022 directory, and run `install.sh` to download the required docker containers and github repos.
 Or alternatively, feel free to do them manually.
 
 ### Docker container images
@@ -79,7 +79,7 @@ Overview of pipeline, its three main subprocesses, and what's running in each:
 01_reads_qc_trim
 ├── reference/
 │   └── ref.fasta
-└── shortreads
+└── shortreads/
     └── fastqc/
     └── trimmomatic0.39/
     └── shortread_1.fastq.gz
@@ -89,7 +89,7 @@ Overview of pipeline, its three main subprocesses, and what's running in each:
 ```bash
 #Output (abbreviated):
 02_alignment
-└── bwamem_output_raw.sorted_stats/ #QualiMap output
+└── bwamem_output_raw.sorted_stats/
 └── indexfiles/
 └── bwamem_output_raw.sorted.bam
 └── marked_duplicates.bam
