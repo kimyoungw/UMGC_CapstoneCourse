@@ -1,4 +1,4 @@
-# UMGC_CapstoneCourse
+# Unified Analysis Variant Pipeline
 Prokaryote variant calling pipeline for Illumina short-reads. Almost exclusively uses Docker containers wrapped up in a shell script workflow.
 
 Developed by Siddhant Bose, Crystal Girod, Justin Kim, Sandra Shannon, and Rachael Vogel.
@@ -57,7 +57,7 @@ Overview of pipeline, its three main subprocesses, and what's running in each:
 * `run_vc-pipeline.sh`
   * Read QC and trimming - run_readcheck.sh:
     * FastQC - quality check reads
-    * Trimmomatic - trim reads
+    * Trimmomatic - trim reads (set to TruSeq)
     * Fastq-info - check coverage (10x min.)
   * Read alignment - run_alignment.sh:
     *  Bwa index/bwa mem - create index files and align
